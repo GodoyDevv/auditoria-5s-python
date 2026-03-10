@@ -1,0 +1,2 @@
+python auditoria.py
+pause
