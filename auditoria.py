@@ -3,8 +3,14 @@ import pandas as pd
 # ler planilha
 df = pd.read_excel("auditoria5S.xlsx")
 
+print(df.columns)
+
+resultados = [] # criar uma lista vazia
+
 # percorrer cada auditoria (cada linha)
 for index, linha in df.iterrows():
+
+    area = linha["Qual é o local que está auditando?"]
 
     ruim = 0
     regular = 0
@@ -32,6 +38,14 @@ for index, linha in df.iterrows():
         elif resposta == "Ótimo":
             otimo += 1
 
+    resultados.append({
+    "Qual é o local que está auditando?": area,
+    "Ruim": ruim,
+    "Regular": regular,
+    "Bom": bom,
+    "Ótimo": otimo,
+    "NA": na
+})
 
     print("Auditoria", index + 1)
     print("Ruim:", ruim)
@@ -40,3 +54,9 @@ for index, linha in df.iterrows():
     print("Ótimo:", otimo)
     print("N/A:", na)
     print("---------------------")
+
+    df_resultado = pd.DataFrame(resultados)
+
+    df_resultado.to_excel("resultado_auditorias.xlsx", index=False)
+
+    print("Relatório gerado: resultado_auditorias.xlsx")
