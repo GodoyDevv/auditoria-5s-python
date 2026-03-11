@@ -42,7 +42,7 @@ cd auditoria-5s-python
 
 python auditoria.py
 
-🧠 Fluxo de funcionamento do sistema
+🧠 **Fluxo de funcionamento do sistema**
 
 Planilha Excel  
 ⬇  
